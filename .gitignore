@@ -38,3 +38,4 @@ pnpm-debug.log*
 .mcp/
 user_detail/
 userData/
+skills-lock.json
