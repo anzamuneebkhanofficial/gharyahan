@@ -115,23 +115,27 @@ function AdminContent() {
     return <AdminSkeleton />;
   }
 
-  const handleConfirmDeleteProperty = () => {
+  const handleConfirmDeleteProperty = async () => {
     if (!propertyToDelete) return;
-    deleteProperty(propertyToDelete.id, null, true);
-    toast.success(`Listing "${propertyToDelete.title}" deleted.`);
-    setPropertyToDelete(null);
+    const res = await deleteProperty(propertyToDelete.id, null, true);
+    if (res.success) {
+      toast.success(`Listing "${propertyToDelete.title}" deleted.`);
+      setPropertyToDelete(null);
+    } else {
+      toast.error(res.error || "Failed to delete property.");
+    }
   };
 
-  const handleConfirmDeleteLandlord = () => {
+  const handleConfirmDeleteLandlord = async () => {
     if (!landlordToDelete) return;
-    deleteLandlord(landlordToDelete.id);
+    await deleteLandlord(landlordToDelete.id);
     toast.success(`Landlord "${landlordToDelete.full_name}" and associated listings removed.`);
     setLandlordToDelete(null);
   };
 
-  const handleConfirmDeleteTenant = () => {
+  const handleConfirmDeleteTenant = async () => {
     if (!tenantToDelete) return;
-    deleteTenant(tenantToDelete.id);
+    await deleteTenant(tenantToDelete.id);
     toast.success(`Tenant "${tenantToDelete.full_name}" removed from platform.`);
     setTenantToDelete(null);
   };
@@ -563,9 +567,10 @@ function AdminContent() {
                       <div className="flex items-center justify-end gap-2">
                         <select
                           value={p.status}
-                          onChange={(e) => {
-                            changeStatus(p.id, e.target.value, null, true);
-                            toast.success(`Status changed to ${e.target.value}`);
+                          onChange={async (e) => {
+                            const newStatus = e.target.value;
+                            await changeStatus(p.id, newStatus, null, true);
+                            toast.success(`Status changed to ${newStatus}`);
                           }}
                           className="rounded-lg border border-border bg-surface px-2 py-1 text-xs font-semibold text-foreground focus:outline-none focus:ring-2 focus:ring-[#0D382B]/20 cursor-pointer"
                         >

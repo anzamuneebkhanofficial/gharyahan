@@ -63,9 +63,9 @@ export default function LandlordDashboardPage() {
     page * PAGE_SIZE
   );
 
-  const handleConfirmDelete = () => {
+  const handleConfirmDelete = async () => {
     if (!propertyToDelete) return;
-    const res = deleteProperty(propertyToDelete.id, currentLandlordId, false);
+    const res = await deleteProperty(propertyToDelete.id, currentLandlordId, false);
     if (res.success) {
       toast.success("Listing removed successfully.");
       setPropertyToDelete(null);
