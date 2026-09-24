@@ -360,6 +360,7 @@ export default function SignupPage() {
           </Link>
         </div>
       </div>
+      </div>
     </div>
   );
 }
