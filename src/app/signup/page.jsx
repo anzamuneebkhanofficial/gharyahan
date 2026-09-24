@@ -67,7 +67,7 @@ export default function SignupPage() {
       const supabase = createClient();
 
       if (isSupabaseConfigured() && supabase) {
-        const appUrl = process.env.NEXT_PUBLIC_APP_URL;
+        const appUrl = (typeof window !== "undefined" && window.location.origin) || process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
         const redirectUrl = `${appUrl}/auth/callback?role=${data.role}`;
 
         const { data: authData, error } = await supabase.auth.signUp({
@@ -180,20 +180,21 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-5 sm:py-7 space-y-4">
-      <div className="text-center space-y-1">
-        <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-primary text-white shadow-sm mb-1">
-          <Building2 className="h-5 w-5 text-amber-400" />
+    <div className="auth-page py-8">
+      <div className="w-full max-w-2xl space-y-4">
+        <div className="text-center space-y-1">
+          <div className="inline-flex items-center justify-center rounded-2xl bg-primary text-white mb-2" style={{width:52, height:52, boxShadow: "0 4px 16px rgba(11,43,32,.28), 0 0 0 1px rgba(11,43,32,.12)"}}>
+            <Building2 className="h-6 w-6" style={{color: "#E8A838"}} />
+          </div>
+          <h1 className="text-2xl sm:text-2xl font-extrabold text-foreground tracking-tight">
+            Join GharYahan
+          </h1>
+          <p className="text-sm text-muted">
+            Pakistan&apos;s 100% free hyperlocal rental marketplace.
+          </p>
         </div>
-        <h1 className="text-2xl sm:text-2xl font-extrabold text-foreground tracking-tight">
-          Join GharYahan
-        </h1>
-        <p className="text-xs text-muted">
-          Pakistan's 100% free hyperlocal rental marketplace.
-        </p>
-      </div>
 
-      <div className="rounded-2xl border border-border bg-surface p-5 sm:p-7 shadow-card">
+      <div className="rounded-2xl border border-border bg-surface p-5 sm:p-7 shadow-card-hover">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* Role selector buttons */}
           <div>

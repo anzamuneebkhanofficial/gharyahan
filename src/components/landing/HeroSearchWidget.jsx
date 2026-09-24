@@ -26,7 +26,7 @@ const SEARCH_TABS = [
 export default function HeroSearchWidget() {
   const router = useRouter();
   const { activeArea, openLocationModal, detectLocation, isDetecting } = useLocationStore();
-  
+
   const [activeTab, setActiveTab] = useState("all");
   const [selectedArea, setSelectedArea] = useState(activeArea || "Gulberg");
   const [selectedBudgetIndex, setSelectedBudgetIndex] = useState(0);
@@ -34,7 +34,7 @@ export default function HeroSearchWidget() {
   const handleSearch = (e) => {
     e?.preventDefault();
     const params = new URLSearchParams();
-    
+
     if (selectedArea && selectedArea !== "All Lahore") {
       params.set("area", selectedArea);
     }
@@ -61,11 +61,10 @@ export default function HeroSearchWidget() {
             key={tab.id}
             type="button"
             onClick={() => setActiveTab(tab.id)}
-            className={`px-3 sm:px-4 py-1.5 rounded-full text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
-              activeTab === tab.id
+            className={`px-3 sm:px-4 py-1.5 rounded-full text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${activeTab === tab.id
                 ? "bg-primary text-white shadow-sm"
                 : "text-muted hover:text-foreground hover:bg-surface-2"
-            }`}
+              }`}
           >
             {tab.label}
           </button>

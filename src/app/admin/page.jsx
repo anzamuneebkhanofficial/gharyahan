@@ -139,88 +139,108 @@ function AdminContent() {
   return (
     <div className="px-4 sm:px-6 lg:px-8 py-8 space-y-7 max-w-7xl">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border pb-5">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-border">
         <div>
-          <div className="flex items-center gap-2">
-            <Shield className="h-6 w-6 text-primary" />
+          <div className="flex items-center gap-2.5">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-light border border-primary/20">
+              <Shield className="h-5 w-5 text-primary" />
+            </div>
             <h1 className="text-2xl font-extrabold text-foreground tracking-tight">
               Master Platform Administration
             </h1>
           </div>
-          <p className="text-xs sm:text-sm text-secondary mt-1">
+          <p className="text-xs sm:text-sm text-secondary mt-1.5 ml-12">
             Complete management, monitoring, landlord/tenant controls, and inventory oversight.
           </p>
         </div>
-
       </div>
 
       {/* Top Universal Monitoring Stats */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-        <div className="rounded-2xl border border-border bg-surface p-4 shadow-card hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-          <div className="text-[11px] font-bold text-muted uppercase tracking-wider mb-1">
-            Properties
+        {/* Properties */}
+        <div className="rounded-2xl border border-border bg-surface p-4 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[11px] font-bold text-muted uppercase tracking-wider">Properties</span>
+            <div className="h-6 w-6 rounded-md bg-primary-light/60 flex items-center justify-center">
+              <Building2 className="h-3.5 w-3.5 text-primary" />
+            </div>
           </div>
           <div className="text-2xl font-black text-foreground tabular-nums">{totalListings}</div>
-          <p className="text-[11px] text-secondary mt-0.5">Total inventory</p>
+          <p className="text-[11px] text-secondary mt-1 font-medium">Total inventory</p>
         </div>
 
-        <div className="rounded-2xl border border-border bg-surface p-4 shadow-card hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-          <div className="text-[11px] font-bold text-secondary uppercase tracking-wider mb-1 flex items-center gap-1">
-            <Building2 className="h-3 w-3" />
-            Landlords
+        {/* Landlords */}
+        <div className="rounded-2xl border border-border bg-surface p-4 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[11px] font-bold text-muted uppercase tracking-wider">Landlords</span>
+            <div className="h-6 w-6 rounded-md bg-primary-light/60 flex items-center justify-center">
+              <ShieldCheck className="h-3.5 w-3.5 text-primary" />
+            </div>
           </div>
           <div className="text-2xl font-black text-foreground tabular-nums">{totalLandlords}</div>
-          <p className="text-[11px] text-muted mt-0.5">Verified owners</p>
+          <p className="text-[11px] text-secondary mt-1 font-medium">Verified owners</p>
         </div>
 
-        <div className="rounded-2xl border border-border bg-surface p-4 shadow-card hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-          <div className="text-[11px] font-bold text-secondary uppercase tracking-wider mb-1 flex items-center gap-1">
-            <Users className="h-3 w-3" />
-            Tenants
+        {/* Tenants */}
+        <div className="rounded-2xl border border-border bg-surface p-4 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[11px] font-bold text-muted uppercase tracking-wider">Tenants</span>
+            <div className="h-6 w-6 rounded-md bg-primary-light/60 flex items-center justify-center">
+              <Users className="h-3.5 w-3.5 text-primary" />
+            </div>
           </div>
           <div className="text-2xl font-black text-foreground tabular-nums">{totalTenants}</div>
-          <p className="text-[11px] text-muted mt-0.5">Active seekers</p>
+          <p className="text-[11px] text-secondary mt-1 font-medium">Active seekers</p>
         </div>
 
-        <div className="rounded-2xl border border-border bg-surface p-4 shadow-card hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-          <div className="text-[11px] font-bold text-primary uppercase tracking-wider mb-1 flex items-center gap-1">
-            <CheckCircle2 className="h-3 w-3" />
-            Available
+        {/* Available */}
+        <div className="rounded-2xl border border-border bg-surface p-4 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 border-t-2 border-t-emerald-500">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[11px] font-bold text-emerald-700 uppercase tracking-wider">Available</span>
+            <div className="h-6 w-6 rounded-md bg-emerald-50 flex items-center justify-center">
+              <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" />
+            </div>
           </div>
-          <div className="text-2xl font-black text-foreground tabular-nums">{availableCount}</div>
-          <p className="text-[11px] text-primary mt-0.5">Ready for visits</p>
+          <div className="text-2xl font-black text-emerald-800 tabular-nums">{availableCount}</div>
+          <p className="text-[11px] text-emerald-700 font-medium mt-1">Ready for visits</p>
         </div>
 
-        <div className="rounded-2xl border border-border bg-surface p-4 shadow-card hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-          <div className="text-[11px] font-bold text-accent uppercase tracking-wider mb-1 flex items-center gap-1">
-            <Clock className="h-3 w-3" />
-            In Deal
+        {/* In Deal */}
+        <div className="rounded-2xl border border-border bg-surface p-4 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 border-t-2 border-t-amber-500">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[11px] font-bold text-amber-700 uppercase tracking-wider">In Deal</span>
+            <div className="h-6 w-6 rounded-md bg-amber-50 flex items-center justify-center">
+              <Clock className="h-3.5 w-3.5 text-amber-600" />
+            </div>
           </div>
-          <div className="text-2xl font-black text-foreground tabular-nums">{inDealCount}</div>
-          <p className="text-[11px] text-accent mt-0.5">Negotiations</p>
+          <div className="text-2xl font-black text-amber-800 tabular-nums">{inDealCount}</div>
+          <p className="text-[11px] text-amber-700 font-medium mt-1">Negotiations</p>
         </div>
 
-        <div className="rounded-2xl border border-border bg-background/80 p-4 shadow-card hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-          <div className="text-[11px] font-bold text-secondary uppercase tracking-wider mb-1 flex items-center gap-1">
-            <Lock className="h-3 w-3" />
-            Sealed
+        {/* Sealed */}
+        <div className="rounded-2xl border border-border bg-surface p-4 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 border-t-2 border-t-slate-300">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[11px] font-bold text-slate-600 uppercase tracking-wider">Sealed</span>
+            <div className="h-6 w-6 rounded-md bg-slate-100 flex items-center justify-center">
+              <Lock className="h-3.5 w-3.5 text-slate-600" />
+            </div>
           </div>
-          <div className="text-2xl font-black text-foreground tabular-nums">{sealedCount}</div>
-          <p className="text-[11px] text-secondary mt-0.5">Rented out</p>
+          <div className="text-2xl font-black text-slate-800 tabular-nums">{sealedCount}</div>
+          <p className="text-[11px] text-slate-600 font-medium mt-1">Rented out</p>
         </div>
       </div>
 
       {/* ── TAB 1: OVERVIEW ──────────────────────────────────────────────── */}
       {currentTab === "overview" && (
         <div className="space-y-6">
-
-
           {/* Quick Management Shortcuts */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div className="rounded-2xl border border-border bg-surface p-6 shadow-card hover:-translate-y-1 hover:shadow-lg transition-all duration-300 flex flex-col justify-between space-y-4">
+            <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between space-y-4">
               <div>
-                <div className="flex items-center gap-2 text-secondary mb-1">
-                  <Building2 className="h-5 w-5" />
+                <div className="flex items-center gap-2.5 text-secondary mb-2">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary-light border border-primary/20">
+                    <Building2 className="h-4 w-4 text-primary" />
+                  </div>
                   <h3 className="font-bold text-base text-foreground">Landlord Management Hub</h3>
                 </div>
                 <p className="text-xs text-secondary leading-relaxed">
@@ -231,16 +251,18 @@ function AdminContent() {
                 onClick={() => router.push("/admin?tab=landlords")}
                 variant="outline"
                 size="sm"
-                className="self-start text-xs border-border font-bold"
+                className="self-start text-xs border-border font-bold hover:bg-surface-2"
               >
                 Manage Landlords
               </Button>
             </div>
 
-            <div className="rounded-2xl border border-border bg-surface p-6 shadow-card hover:-translate-y-1 hover:shadow-lg transition-all duration-300 flex flex-col justify-between space-y-4">
+            <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between space-y-4">
               <div>
-                <div className="flex items-center gap-2 text-secondary mb-1">
-                  <Users className="h-5 w-5" />
+                <div className="flex items-center gap-2.5 text-secondary mb-2">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary-light border border-primary/20">
+                    <Users className="h-4 w-4 text-primary" />
+                  </div>
                   <h3 className="font-bold text-base text-foreground">Tenant Management Hub</h3>
                 </div>
                 <p className="text-xs text-secondary leading-relaxed">
@@ -251,7 +273,7 @@ function AdminContent() {
                 onClick={() => router.push("/admin?tab=tenants")}
                 variant="outline"
                 size="sm"
-                className="self-start text-xs border-border font-bold"
+                className="self-start text-xs border-border font-bold hover:bg-surface-2"
               >
                 Manage Tenants
               </Button>

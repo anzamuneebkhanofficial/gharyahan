@@ -148,12 +148,25 @@ export default function Footer() {
 
         {/* Bottom copyright & attribution */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted">
-          <p>© {new Date().getFullYear()} GharYahan. Built with pride for Lahore, Pakistan.</p>
-          <div className="flex items-center gap-6 font-medium">
+          <div className="flex flex-col items-center sm:items-start gap-1.5">
+            <p>© {new Date().getFullYear()} GharYahan. Built with pride for Lahore, Pakistan.</p>
+            <p className="flex items-center gap-1 font-medium">
+              Powered by{" "}
+              <a 
+                href="https://muhammadanzamuneebkhan.vercel.app/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary hover:text-primary-dark hover:underline font-bold transition-colors"
+              >
+                Anza Muneeb Khan
+              </a>
+            </p>
+          </div>
+          <div className="flex flex-wrap justify-center sm:justify-end items-center gap-x-4 gap-y-2 font-medium">
             <span>Zero Broker Commission</span>
-            <span>·</span>
-            <span>Real-time Deal Status</span>
-            <span>·</span>
+            <span className="hidden sm:inline">·</span>
+            <span>Real-time Deals</span>
+            <span className="hidden sm:inline">·</span>
             <span>Direct WhatsApp</span>
           </div>
         </div>

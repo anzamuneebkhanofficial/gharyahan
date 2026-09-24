@@ -236,11 +236,10 @@ export default function SearchPage() {
           <button
             type="button"
             onClick={() => handleSelectAreaPill("all")}
-            className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-              !filterByLocation
+            className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${!filterByLocation
                 ? "bg-primary text-white"
                 : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-            }`}
+              }`}
           >
             All
           </button>
@@ -254,11 +253,10 @@ export default function SearchPage() {
                 key={area.id}
                 type="button"
                 onClick={() => handleSelectAreaPill(area.name)}
-                className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                  isSelected
+                className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${isSelected
                     ? "bg-emerald-100 text-emerald-900 border border-emerald-300 font-bold"
                     : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-                }`}
+                  }`}
               >
                 {area.name}
               </button>
@@ -279,9 +277,8 @@ export default function SearchPage() {
 
         {/* Filter Panel with Zero CLS Guaranteed Fixed-Dimension Grid */}
         <div
-          className={`mt-4 pt-4 border-t border-slate-100 ${
-            isFilterOpen ? "block" : "hidden md:block"
-          }`}
+          className={`mt-4 pt-4 border-t border-slate-100 ${isFilterOpen ? "block" : "hidden md:block"
+            }`}
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 text-xs">
             {/* 1. Property Type */}
@@ -414,11 +411,10 @@ export default function SearchPage() {
                   key={idx}
                   type="button"
                   onClick={() => handlePresetBudget(preset)}
-                  className={`px-2 py-0.5 rounded-md text-[11px] font-semibold transition-all cursor-pointer ${
-                    isSelected
+                  className={`px-2 py-0.5 rounded-md text-[11px] font-semibold transition-all cursor-pointer ${isSelected
                       ? "bg-emerald-800 text-white shadow-xs"
                       : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-                  }`}
+                    }`}
                 >
                   {preset.label}
                 </button>

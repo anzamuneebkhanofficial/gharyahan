@@ -16,7 +16,7 @@ export const viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#000000",
+  themeColor: "#0B2B20",
 };
 
 export const metadata = {
@@ -73,7 +73,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-background text-foreground font-sans antialiased selection:bg-primary selection:text-white">
+      <body className="min-h-screen flex flex-col bg-background text-foreground font-sans antialiased">
         {/* Skip navigation link for keyboard/screen-reader users */}
         <a
           href="#main-content"

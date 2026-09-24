@@ -112,18 +112,15 @@ function NavItem({ item, pathname, searchParams, onClick }) {
       href={item.href}
       onClick={onClick}
       aria-current={isActive ? "page" : undefined}
-      className={`flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none ${isActive
-          ? "bg-primary text-white shadow-card"
-          : "text-secondary hover:bg-background hover:text-foreground"
-        }`}
+      className={`sidebar-nav-item ${isActive ? "active" : ""} focus-visible:ring-2 focus-visible:ring-yellow-400/60 focus-visible:outline-none`}
     >
       <Icon
-        className={`h-4 w-4 shrink-0 ${isActive ? "text-accent" : "text-subtle"}`}
+        className={`h-4 w-4 shrink-0 sidebar-icon ${isActive ? "" : ""}`}
         aria-hidden="true"
       />
       <span className="truncate">{item.label}</span>
       {isActive && (
-        <ChevronRight className="h-3.5 w-3.5 ml-auto text-accent/80 shrink-0" aria-hidden="true" />
+        <ChevronRight className="h-3.5 w-3.5 ml-auto shrink-0 opacity-70" aria-hidden="true" />
       )}
     </Link>
   );
@@ -148,30 +145,31 @@ export function DashboardSidebar({ isOpen, onClose, variant = null }) {
   const sidebarContent = (
     <div className="flex flex-col h-full overflow-hidden">
       {/* User info + role badge */}
-      <div className="px-4 py-4 border-b border-border shrink-0 relative">
+      <div className="px-4 py-4 shrink-0 relative" style={{borderBottom: "1px solid var(--sidebar-border)"}}>
         {onClose && (
           <button
             type="button"
             onClick={onClose}
-            className="absolute top-4 right-4 md:hidden p-1.5 rounded-lg text-subtle hover:bg-background transition-colors focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
+            className="absolute top-4 right-4 md:hidden p-1.5 rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-yellow-400/60 focus-visible:outline-none"
+            style={{color: "var(--sidebar-text-muted)"}}
             aria-label="Close navigation"
           >
             <X className="h-5 w-5" aria-hidden="true" />
           </button>
         )}
         <div className="flex items-center gap-2.5">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-white text-sm font-bold shrink-0">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl text-sm font-bold shrink-0" style={{background: "rgba(232,168,56,.18)", border: "1px solid rgba(232,168,56,.4)", color: "#F0BC5C"}}>
             {user?.full_name?.[0]?.toUpperCase() ?? (effectiveRole === "admin" ? "A" : "U")}
           </div>
           <div className="min-w-0">
-            <div className="text-sm font-bold text-foreground truncate">
+            <div className="text-sm font-bold truncate" style={{color: "var(--sidebar-text-strong)"}}>
               {user?.full_name ?? (effectiveRole === "admin" ? "Master Admin" : "Account")}
             </div>
-            <div className="text-xs text-muted truncate">{user?.email || (effectiveRole === "admin" ? "admin@gharyahan.pk" : "")}</div>
+            <div className="text-xs truncate" style={{color: "var(--sidebar-text-muted)"}}>{user?.email || (effectiveRole === "admin" ? "admin@gharyahan.pk" : "")}</div>
           </div>
         </div>
         <div className="mt-3">
-          <span className={`inline-flex items-center rounded-lg px-2.5 py-1 text-[11px] font-bold ${config.badgeColor}`}>
+          <span className="inline-flex items-center rounded-lg px-2.5 py-1 text-[11px] font-bold" style={{background: "rgba(232,168,56,.18)", border: "1px solid rgba(232,168,56,.4)", color: "#F0BC5C"}}>
             {config.label}
           </span>
         </div>
@@ -184,7 +182,7 @@ export function DashboardSidebar({ isOpen, onClose, variant = null }) {
       >
         {config.groups.map((group) => (
           <div key={group.heading}>
-            <p className="px-3 mb-1.5 text-[10px] font-bold text-subtle uppercase tracking-widest">
+            <p className="sidebar-section-label">
               {group.heading}
             </p>
             <div className="space-y-0.5">
@@ -209,41 +207,41 @@ export function DashboardSidebar({ isOpen, onClose, variant = null }) {
       </nav>
 
       {/* Footer actions */}
-      <div className="shrink-0 p-3 border-t border-border space-y-2 bg-surface">
+      <div className="shrink-0 p-3 space-y-1" style={{borderTop: "1px solid var(--sidebar-border)"}}>
         {effectiveRole !== "admin" && (
-          <>
-            <div className="space-y-0.5">
-              <Link
-                href="/"
-                onClick={onClose}
-                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-secondary hover:bg-background hover:text-foreground transition-colors focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
-              >
-                <Home className="h-4 w-4 text-muted" aria-hidden="true" />
-                Public Site
-              </Link>
-            </div>
-          </>
+          <Link
+            href="/"
+            onClick={onClose}
+            className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-yellow-400/60 focus-visible:outline-none"
+            style={{color: "var(--sidebar-text)"}}
+            onMouseOver={e => { e.currentTarget.style.background = "var(--sidebar-hover-bg)"; e.currentTarget.style.color = "var(--sidebar-text-strong)"; }}
+            onMouseOut={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "var(--sidebar-text)"; }}
+          >
+            <Home className="h-4 w-4 sidebar-icon" aria-hidden="true" />
+            Public Site
+          </Link>
         )}
 
-        <div className="space-y-0.5">
-          <button
-            type="button"
-            onClick={handleSignOut}
-            className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-rose-600 hover:bg-rose-50 transition-colors focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:outline-none cursor-pointer"
-          >
-            <LogOut className="h-4 w-4" aria-hidden="true" />
-            Sign out
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={handleSignOut}
+          className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-rose-500/60 focus-visible:outline-none cursor-pointer"
+          style={{color: "rgba(252,129,129,.85)"}}
+          onMouseOver={e => { e.currentTarget.style.background = "rgba(239,68,68,.1)"; e.currentTarget.style.color = "rgb(252,129,129)"; }}
+          onMouseOut={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "rgba(252,129,129,.85)"; }}
+        >
+          <LogOut className="h-4 w-4" aria-hidden="true" />
+          Sign out
+        </button>
       </div>
     </div>
   );
 
   return (
     <>
-      {/* Desktop sidebar — sticky viewport height */}
+      {/* Desktop sidebar — sticky viewport height, always dark brand emerald */}
       <aside
-        className="hidden md:flex flex-col w-64 shrink-0 border-r border-border bg-surface sticky top-0 h-screen z-30"
+        className="hidden md:flex flex-col w-64 shrink-0 sticky top-0 h-screen z-30 sidebar-dark"
         aria-label="Sidebar"
       >
         {sidebarContent}
@@ -253,12 +251,12 @@ export function DashboardSidebar({ isOpen, onClose, variant = null }) {
       {isOpen && (
         <>
           <div
-            className="md:hidden fixed inset-0 z-40 bg-foreground/40 backdrop-blur-sm"
+            className="md:hidden fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
             onClick={onClose}
             aria-hidden="true"
           />
           <aside
-            className="md:hidden fixed inset-y-0 left-0 z-50 flex flex-col w-64 bg-surface shadow-2xl"
+            className="md:hidden fixed inset-y-0 left-0 z-50 flex flex-col w-64 shadow-2xl sidebar-dark"
             aria-label="Navigation drawer"
           >
             {sidebarContent}

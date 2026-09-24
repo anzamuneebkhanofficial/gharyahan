@@ -62,7 +62,7 @@ export default function HomePage() {
 
   return (
     <main id="main-content" className="w-full bg-background text-foreground overflow-hidden">
-      
+
       {/* ── HERO SECTION (RubyHome + Modern Hybrid) ─────────────────────────── */}
       <section
         aria-label="Find rental homes in Lahore"
@@ -74,10 +74,10 @@ export default function HomePage() {
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-            
+
             {/* Left Column: Copy & Interactive Search Widget */}
             <div className="lg:col-span-7 space-y-6 z-10">
-              
+
               {/* Eyebrow badge */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface border border-border shadow-xs text-xs font-bold text-primary">
                 <span className="relative flex h-2 w-2">
@@ -169,7 +169,7 @@ export default function HomePage() {
       {/* ── POPULAR RENTAL PROPERTIES ─────────────────────────────────────── */}
       <section aria-labelledby="popular-heading" className="py-16 lg:py-24 bg-background">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          
+
           {/* Header Row */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
             <div>
@@ -208,11 +208,10 @@ export default function HomePage() {
                 type="button"
                 onClick={() => setSelectedType(t.id)}
                 aria-pressed={selectedType === t.id}
-                className={`flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-bold transition-all cursor-pointer border ${
-                  selectedType === t.id
+                className={`flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-bold transition-all cursor-pointer border ${selectedType === t.id
                     ? "bg-primary text-white border-primary shadow-xs"
                     : "bg-surface text-secondary border-border hover:bg-surface-2"
-                }`}
+                  }`}
               >
                 <t.Icon className="h-3.5 w-3.5" />
                 <span>{t.label}</span>

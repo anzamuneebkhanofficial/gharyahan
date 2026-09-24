@@ -11,7 +11,7 @@ export default function AdminLayout({ children }) {
   return (
     <div className="flex min-h-screen bg-background">
       {/* Admin Sidebar */}
-      <Suspense fallback={<div className="w-64 shrink-0 border-r border-border bg-surface hidden md:block" />}>
+      <Suspense fallback={<div className="w-64 shrink-0 sidebar-dark hidden md:block" />}>
         <DashboardSidebar
           variant="admin"
           isOpen={sidebarOpen}

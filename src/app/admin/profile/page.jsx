@@ -62,7 +62,7 @@ export default function AdminProfilePage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border pb-6">
         <div>
           <div className="flex items-center gap-2.5">
-            <div className="h-9 w-9 rounded-xl bg-red-100 text-red-700 flex items-center justify-center font-bold">
+            <div className="h-10 w-10 rounded-xl bg-primary-light text-primary border border-primary/20 flex items-center justify-center font-bold">
               <Shield className="h-5 w-5" />
             </div>
             <h1 className="text-2xl font-extrabold text-foreground tracking-tight">
@@ -74,8 +74,8 @@ export default function AdminProfilePage() {
           </p>
         </div>
 
-        <div className="inline-flex items-center gap-1.5 rounded-full bg-red-100 px-3 py-1 text-xs font-bold text-red-800 border border-red-200">
-          <ShieldCheck className="h-4 w-4 text-red-600" />
+        <div className="inline-flex items-center gap-1.5 rounded-full bg-primary-light px-3.5 py-1.5 text-xs font-bold text-primary border border-primary/20">
+          <ShieldCheck className="h-4 w-4 text-primary" />
           <span>Superadmin Clearance</span>
         </div>
       </div>

@@ -48,9 +48,9 @@ const Input = forwardRef(
             aria-invalid={error ? "true" : "false"}
             aria-describedby={ariaDescribedBy}
             className={cn(
-              "w-full rounded-xl border border-border bg-surface px-3.5 py-2.5 text-foreground placeholder:text-subtle focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-sm min-h-[48px]",
+              "w-full rounded-xl border-[1.5px] border-border bg-surface-2 px-3.5 py-2.5 text-foreground placeholder:text-subtle focus:border-primary focus:bg-surface focus:outline-none focus:ring-2 focus:ring-primary/15 hover:border-border-strong hover:bg-surface transition-all text-sm min-h-[48px]",
               (canToggle || rightElement) && "pr-11",
-              error && "border-rose-500 focus:border-rose-500 focus:ring-rose-500/20",
+              error && "border-rose-500 focus:border-rose-500 focus:ring-rose-500/15 bg-rose-50/30",
               className
             )}
             {...props}

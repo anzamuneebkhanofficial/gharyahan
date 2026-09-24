@@ -124,66 +124,68 @@ function LoginForm() {
   };
 
   return (
-    <div className="mx-auto max-w-md px-4 py-16 space-y-6">
-      <div className="text-center space-y-2">
-        <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-white shadow-sm mb-2">
-          <Building2 className="h-6 w-6 text-amber-400" />
-        </div>
-        <h1 className="text-2xl font-extrabold text-foreground tracking-tight">
-          Welcome to GharYahan
-        </h1>
-        <p className="text-xs text-muted">
-          Sign in to manage your rental properties or access saved favorites.
-        </p>
-      </div>
-
-      <div className="rounded-2xl border border-border bg-surface p-6 sm:p-8 shadow-card">
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <Input
-            label="Email Address"
-            type="email"
-            placeholder="you@example.com"
-            {...register("email")}
-            error={errors.email?.message}
-          />
-
-          <div>
-            <div className="flex items-center justify-between mb-1">
-              <label className="text-xs font-bold text-secondary uppercase tracking-wider">
-                Password
-              </label>
-              <Link
-                href="/forgot-password"
-                className="text-xs font-semibold text-primary hover:text-primary-hover hover:underline"
-              >
-                Forgot Password?
-              </Link>
-            </div>
-            <Input
-              type="password"
-              placeholder="••••••••"
-              {...register("password")}
-              error={errors.password?.message}
-            />
+    <div className="auth-page">
+      <div className="w-full max-w-md space-y-6">
+        <div className="text-center space-y-2">
+          <div className="inline-flex h-13 w-13 items-center justify-center rounded-2xl bg-primary text-white shadow-lg mb-3" style={{width:52, height:52, boxShadow: "0 4px 16px rgba(11,43,32,.28), 0 0 0 1px rgba(11,43,32,.12)"}}>
+            <Building2 className="h-6 w-6" style={{color: "#E8A838"}} />
           </div>
+          <h1 className="text-2xl font-extrabold text-foreground tracking-tight">
+            Welcome to GharYahan
+          </h1>
+          <p className="text-sm text-muted">
+            Sign in to manage your rental properties or access saved favorites.
+          </p>
+        </div>
 
-          <Button
-            type="submit"
-            variant="primary"
-            size="lg"
-            isLoading={isSubmitting}
-            className="w-full bg-primary mt-2 font-bold"
-          >
-            <span>Sign In</span>
-            <ArrowRight className="h-4 w-4 ml-1.5" />
-          </Button>
-        </form>
+        <div className="rounded-2xl border border-border bg-surface p-6 sm:p-8 shadow-card-hover">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <Input
+              label="Email Address"
+              type="email"
+              placeholder="you@example.com"
+              {...register("email")}
+              error={errors.email?.message}
+            />
 
-        <div className="mt-6 border-t border-border pt-4 text-center text-xs text-secondary">
-          Don't have an account?{" "}
-          <Link href="/signup" className="font-bold text-primary hover:underline">
-            Register as Tenant or Landlord
-          </Link>
+            <div>
+              <div className="flex items-center justify-between mb-1.5">
+                <label className="text-sm font-medium text-foreground">
+                  Password
+                </label>
+                <Link
+                  href="/forgot-password"
+                  className="text-xs font-semibold text-primary hover:text-primary-hover hover:underline"
+                >
+                  Forgot Password?
+                </Link>
+              </div>
+              <Input
+                type="password"
+                placeholder="••••••••"
+                {...register("password")}
+                error={errors.password?.message}
+              />
+            </div>
+
+            <Button
+              type="submit"
+              variant="primary"
+              size="lg"
+              isLoading={isSubmitting}
+              className="w-full mt-2 font-bold"
+            >
+              <span>Sign In</span>
+              <ArrowRight className="h-4 w-4 ml-1.5" />
+            </Button>
+          </form>
+
+          <div className="mt-6 border-t border-border pt-4 text-center text-sm text-muted">
+            Don&apos;t have an account?{" "}
+            <Link href="/signup" className="font-bold text-primary hover:underline">
+              Register as Tenant or Landlord
+            </Link>
+          </div>
         </div>
       </div>
     </div>

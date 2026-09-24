@@ -16,7 +16,7 @@ export default function DashboardLayout({ children }) {
 
   return (
     <div className="flex min-h-screen bg-background">
-      <Suspense fallback={<div className="w-64 shrink-0 border-r border-border bg-surface hidden md:block" />}>
+      <Suspense fallback={<div className="w-64 shrink-0 sidebar-dark hidden md:block" />}>
         <DashboardSidebar
           isOpen={sidebarOpen}
           onClose={() => setSidebarOpen(false)}
@@ -29,11 +29,10 @@ export default function DashboardLayout({ children }) {
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2 text-xs font-semibold text-secondary">
               <span className="text-muted">GharYahan</span>
-              <span>/</span>
+              <span className="text-muted">/</span>
               <span className="text-foreground font-bold">{roleLabel}</span>
             </div>
           </div>
-
         </header>
 
         {/* Mobile top bar */}
@@ -42,14 +41,14 @@ export default function DashboardLayout({ children }) {
             <button
               type="button"
               onClick={() => setSidebarOpen(true)}
-              className="p-2 rounded-lg text-muted hover:bg-background transition-colors focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
+              className="p-2 rounded-lg text-muted hover:bg-surface-2 transition-colors focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
               aria-label="Open navigation menu"
               aria-expanded={sidebarOpen}
             >
               <Menu className="h-5 w-5" aria-hidden="true" />
             </button>
             <div className="flex items-center gap-2">
-              <Building2 className="h-4 w-4 text-primary" aria-hidden="true" />
+              <Building2 className="h-4 w-4 text-accent" aria-hidden="true" />
               <span className="text-sm font-bold text-foreground">{roleLabel}</span>
             </div>
           </div>
